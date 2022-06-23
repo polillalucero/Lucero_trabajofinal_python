@@ -12,33 +12,28 @@ def categorias (self):
     return HttpResponse (documento)
 # Create your views here.
 
-def posts (self):
-  documento = f"Página de posts"
-  return HttpResponse(documento)
+def posts (request):
+  return render(request, 'Appestudiosrurales/Posts.html')
 
-def comentarios (self):
-  documento = f"Página de comentarios"
-  return HttpResponse(documento)
 
-def investigadorxs (self):
-  documento = f"Página de investigadorxs"
-  return HttpResponse(documento)
+def comentarios (request):
+  return render(request, 'Appestudiosrurales/comentarios')
 
-def publicaciones_home (self):
-  documento = f"Página de publicaciones"
-  return HttpResponse(documento)
+def investigadorxs (request):
+  return render(request, 'Appestudiosrurales/investigadorxs.html')
 
-def actividades_eventos (self):
-  documento = f"Página de Actividades y Eventos"
-  return HttpResponse(documento)
+def publicaciones_home (request):
+ return render(request, 'Appestudiosrurales/Publicaciones.html')
 
-def about_me (self):
-  documento = f"Sobre mí"
-  return HttpResponse(documento)
+def actividades_eventos (request):
+  return render(request, 'Appestudiosrurales/Actividades y Eventos.html')
 
-def mi_home (self):
-  home = loader.get_template('home.html')
-  documento = home.render() 
+def about_me (request):
+ return render(request, 'Appestudiosrurales/sobre mí.html')
+
+def mi_home (request):
+  home = loader.get_template('Appestudiosrurales/home.html ')
+  documento = home.render()
   return HttpResponse (documento)
 
 
