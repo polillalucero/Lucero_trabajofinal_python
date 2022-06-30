@@ -1,0 +1,20 @@
+
+
+{% extends 'Appestudiosrurales/padre.html' %}
+{% load static %}
+{% block section_name%}
+<h3>Formulario para Investigadorxs</h3>
+{% endblock %}
+{% block contenidoQueCambia %}
+<form action="{% url 'investigadorxsFormulario' %}" method="POST">{% csrf_token %}
+    <h1> Estimade investigadorx, ingrese sus datos</h1>
+    <table>
+        {{miFormulario.as_table}}
+    </table>
+    
+     <input type = 'submit' value = 'Enviar Formulario' >         
+</form>
+{% endblock %}
+
+
+

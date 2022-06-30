@@ -1,0 +1,13 @@
+{% extends 'Appestudiosrurales/padre.html' %}
+{% load static %}
+{% block section_name %}
+<h3>Actividades y Eventos</h3>
+{% endblock %}
+{% block contenidoQueCambia %}
+<h3>Sección de Actividades y Eventos</h3>
+{%for actividades in object_list %}
+<li> {{Actividades_eventos}}</li>
+{% endfor %}
+{% endblock %}
+
+

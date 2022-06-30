@@ -2,5 +2,15 @@
 {% load static %}
 {% block contenidoQueCambia %}
 <h3>Sobre mí</h3>
+<head> 
+    <body>
+    {%block content%}
+ <h2> Hola! mi nombre es Paula Lucero, soy Licenciada y Profesora de Sociología (UNLP). También hice una maestría en Antropología Social (UNSAM) y un Doctorado en Geografía (UNLP), por lo que esto ha sido un enorme desafío. Mis líneas de estudio se orientan a los estudios rurales, especialmente el uso de agrotóxicos en comunidades rurales y sus efectos en la salud humana, animal y el ambiente. En el centro de Investigaciones existe un grupo que se especializa en estudios rurales, género y migraciones por lo que me pareció interesante poder orientar mi proyecto final en ese sentido. Gracias por leerme! Paula</h2>
+    {%endblock content%}
+    <header class="py-5 bg-image-full" style="background-image: url('https://cdn.bolivia.com/sdi/2018/10/04/bolivia-y-argentina-intercambian-experiencias-en-produccion-agroecologica-675852.jpg')">
+    <img class="img-fluid d-block mx-auto" src="{% static 'img/logo.png' %}" alt="">
+    </header>
+    </body>
+    </head>
 
 {% endblock %}

@@ -1,0 +1,14 @@
+{% extends "Appestudiosrurales/padre.html" %}
+{% load static %}
+{% block section_name %}
+<h3>Publicaciones</h3>
+{% endblock %}
+{% block contenidoQueCambia %}
+<h3>Publicaciones del equipo de investigación</h3>
+{% for publicacion in publicaciones % }
+   <li>{{publicaciones}}</li>
+<button>
+    <a href="{% url 'eliminarPublicacion' publicaciones.Título %}">Eliminar</a>
+    <a href="{% url 'editarPublicacion' publicaciones.nombre %}">Editar</a>
+</button>
+{%endblock%}

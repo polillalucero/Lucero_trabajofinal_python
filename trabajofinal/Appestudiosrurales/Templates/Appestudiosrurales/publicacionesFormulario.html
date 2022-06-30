@@ -1,0 +1,14 @@
+{% extends 'Appestudiosrurales/padre.html' %}
+{% load static %}
+{% block section_name%}
+<h3>Formulario para Publicaciones</h3>
+{% endblock %}
+{% block contenidoQueCambia %}
+<form action="{% url 'publicacionesFormulario' %}" method="POST">{% csrf_token %}
+    <h1> Ingrese los datos de su publicación </h1>
+    <table>
+        {{miFormulario.as_table}}     
+    </table>
+     <input type = 'submit' value = 'Enviar Formulario' >         
+</form>
+{% endblock %}

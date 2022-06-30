@@ -1,0 +1,11 @@
+{% extends 'Appestudiosrurales/padre.html' %}
+{% load static %}
+{% block contenidoQueCambia %}
+<h3>Eliminar Actividades y Eventos</h3>
+<form method="POST">{% csrf_token%}
+    <p>Estás seguro de eliminar el evento "{{object}}"</p>
+    <input type ="submit" value="SI"/>
+</form>
+{%endblock%}
+
+

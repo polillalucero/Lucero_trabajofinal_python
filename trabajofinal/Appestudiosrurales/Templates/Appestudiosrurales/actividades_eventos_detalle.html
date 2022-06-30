@@ -1,0 +1,15 @@
+{% extends 'Appestudiosrurales/padre.html' %}
+{% load static %}
+{% block contenidoQueCambia %}
+<p>NOMBRE: <i>{{actividadesyeventos.nombre_de_evento}}</i></p>
+<p>FECHA:<i>{{actividadesyeventos.Fecha}}</i></p>
+<p>CONVOCA:<i>{{actividadesyeventos.Convoca}}</i></p>
+<p>PARTICIPAN<i>{{actividadesyeventos.Participan}}</i></p>
+<p>INSTITUCION<i>{{actividadesyeventos.Institucion}}</i></p>
+
+<p>
+    <a href = "{% url 'actividades_eventos_listar'}"> Volver a la lista de Actividades y Eventos</a>
+</p>
+
+{%endblock%}
+
