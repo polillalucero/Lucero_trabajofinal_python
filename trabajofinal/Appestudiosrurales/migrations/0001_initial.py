@@ -38,7 +38,7 @@ class Migration(migrations.Migration):
             name='Publicaciones',
             fields=[
                 ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('Título', models.CharField(max_length=50)),
+                ('Titulo', models.CharField(max_length=50)),
                 ('Autorxs', models.CharField(max_length=50)),
                 ('Pertenencia_institucional_de_autorxs', models.CharField(max_length=50)),
                 ('url_de_la_publicacion', models.URLField()),

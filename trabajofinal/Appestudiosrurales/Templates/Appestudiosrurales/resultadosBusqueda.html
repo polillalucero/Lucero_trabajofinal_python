@@ -4,12 +4,12 @@
 <h3>Resultado de su búsqueda</h3>
 {% endblock %}
 {% block contenidoQueCambia %}
-<h1> Estamos buscando les Investigadorx del Grupo de Estudios {{'investigadorx'}}</h1>
-{% if investigadorx %}     
+<h1> Estamos buscando les Investigadorx del Grupo de Estudios {{Apellido}}</h1>
+{% if investigadorxs %}     
 <ul>
-{% for investigadorxs in investigadorxs %}
- <li>{{% investigadorxs.nombre%}}</li>
- <li>{{% investigadorxs.apellido%}}</li>
+{% for investigadorx in investigadorxs %}
+  <li>{{investigadorx.Nombre}}</li>
+  <li>{{investigadorx.Apellido}}</li>
  <br>
  {% endfor%}
 </ul>

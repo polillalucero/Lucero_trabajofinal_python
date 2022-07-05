@@ -2,8 +2,9 @@
 {% load static %}
 {% block contenidoQueCambia %}
 <h1>Esta es la sección de Actividades y Eventos </h1>
+<ul>
 {% for actividades_eventos in object_list %} 
-<li>{{Actividades_eventos}}</li>
+<li>{{actividades_eventos.nombre_de_evento}}
 <button>
   <a href="{% url 'actividades_eventos_detalle' actividades_eventos.id%}">Detalle</a>
 </button>
@@ -13,7 +14,9 @@
 <button>
   <a href="{% url 'actividades_eventos_borrar' actividades_eventos.id %}">Borrar</a>
 </button>
+</li>
 {% endfor %}
+</ul>
 <br>
 <br>
 <button>

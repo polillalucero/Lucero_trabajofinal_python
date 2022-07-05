@@ -1,11 +1,11 @@
 {% extends 'Appestudiosrurales/padre.html' %}
 {% load static %}
 {% block contenidoQueCambia %}
-<p>NOMBRE: <i>{{actividadesyeventos.nombre_de_evento}}</i></p>
-<p>FECHA:<i>{{actividadesyeventos.Fecha}}</i></p>
-<p>CONVOCA:<i>{{actividadesyeventos.Convoca}}</i></p>
-<p>PARTICIPAN<i>{{actividadesyeventos.Participan}}</i></p>
-<p>INSTITUCION<i>{{actividadesyeventos.Institucion}}</i></p>
+<p>NOMBRE: <i>{{actividades_eventos.nombre_de_evento}}</i></p>
+<p>FECHA:<i>{{actividades_eventos.Fecha}}</i></p>
+<p>CONVOCA:<i>{{actividades_eventos.Convoca}}</i></p>
+<p>PARTICIPAN<i>{{actividades_eventos.Participan}}</i></p>
+<p>INSTITUCION<i>{{actividades_eventos.Institucion}}</i></p>
 
 <p>
     <a href = "{% url 'actividades_eventos_listar'}"> Volver a la lista de Actividades y Eventos</a>

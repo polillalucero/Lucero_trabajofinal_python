@@ -1,5 +1,5 @@
 from django.urls import path
-from Appestudiosrurales.views import categorias, posts, comentarios, actividades_eventos, investigadorxs, publicaciones_home, about_me, mi_home, investigadorxsFormulario, publicacionesFormulario,busquedainvestigadorx , buscar, leerPublicaciones, eliminarPublicacion, editarPublicacion, ActividadesyeventosList, ActividadesyeventosDetalle, ActividadesyeventosCreacion, ActividadesyeventosEdicion, ActividadesyeventosEliminacion, login_request, register_request, editarPerfil
+from Appestudiosrurales.views import categorias, posts, comentarios, actividades_eventos, investigadorxs, publicaciones_home, about_me, mi_home, investigadorxsFormulario, publicacionesFormulario,busquedainvestigadorx , buscar, leerPublicaciones, eliminarPublicacion, editarPublicacion, ActividadesyeventosList, ActividadesyeventosDetalle, ActividadesyeventosCreacion, ActividadesyeventosEdicion, ActividadesyeventosEliminacion, login_request, register_request, editarPerfil, postList, postDetalle, investigadorxsList, investigadorxsDetalle
 from django.contrib.auth.views import LogoutView
  
 urlpatterns = [
@@ -15,14 +15,18 @@ path ('publicacionesFormulario/', publicacionesFormulario, name= 'publicacionesF
 path ('busquedaInvestigadorx/', busquedainvestigadorx, name = 'busquedainvestigadorx'),
 path ('resultadosBusqueda/', buscar, name = 'buscar'),
 path ('publicaciones_home/', leerPublicaciones, name = 'publicaciones_home'), #ver si el error está acá 
-path ('eliminarPublicacion/<Título>', eliminarPublicacion, name = 'eliminarPublicacion'),
-path ('editarPublicacion/<publicaciones_Título>', editarPublicacion, name = 'editarPublicacion'),
-path('actividades_eventos/list/', ActividadesyeventosList.as_view(), name = 'actividades_eventos_list'),
+path ('eliminarPublicacion/<Titulo>', eliminarPublicacion, name = 'eliminarPublicacion'),
+path ('editarPublicacion/<Titulo>', editarPublicacion, name = 'editarPublicacion'),
+
+path('actividades_eventos/list/', ActividadesyeventosList.as_view(), name = 'actividades_eventos_listar'),
 path('actividades_eventos/<pk>', ActividadesyeventosDetalle.as_view(), name = 'actividades_eventos_detalle'),
 path('actividades_eventos/nuevo/', ActividadesyeventosCreacion.as_view(), name = 'actividades_eventos_crear'),
-path('actividades_eventos/<pk>', ActividadesyeventosEdicion.as_view(), name = 'actividades_eventos_editar'),
-path('actividades_eventos/<pk>', ActividadesyeventosEliminacion.as_view(), name = 'actividades_eventos_borrar'),
-#-------------------------------------------LOGIN
+path('actividades_eventos/editar/<pk>', ActividadesyeventosEdicion.as_view(), name = 'actividades_eventos_editar'),
+path('actividades_eventos/borrar/<pk>', ActividadesyeventosEliminacion.as_view(), name = 'actividades_eventos_borrar'),
+path ('investigadorxsList/list/', investigadorxsList.as_view(), name = 'investigadorxsList' ),
+path ('investigadorxs_detalle/<pk>', investigadorxsDetalle.as_view(), name = 'investigadorxs_detalle'),
+path('postList/list/', postList.as_view(), name = 'postList'), 
+path ('Post_detalle/<pk>', postDetalle.as_view(), name = 'Post_detalle'),
 path('login/', login_request, name = 'login'),
 path ('register/', register_request, name = 'register'),
 path ('logout/', LogoutView.as_view(template_name='Appestudiosrurales/logout.html'), name = 'logout'),

@@ -5,10 +5,14 @@
 {% endblock %}
 {% block contenidoQueCambia %}
 <h3>Publicaciones del equipo de investigación</h3>
-{% for publicacion in publicaciones % }
-   <li>{{publicaciones}}</li>
+<ul>
+{% for publicacion in publicaciones %}
+   <li>{{publicacion.Titulo}}
 <button>
-    <a href="{% url 'eliminarPublicacion' publicaciones.Título %}">Eliminar</a>
-    <a href="{% url 'editarPublicacion' publicaciones.nombre %}">Editar</a>
+   <a href="{% url 'eliminarPublicacion' publicacion.Titulo%}">Eliminar</a>
+   <a href="{% url 'editarPublicacion' publicacion.Titulo%}">Editar</a>
 </button>
-{%endblock%}
+</li>
+{% endfor %}
+</ul>
+{% endblock %}

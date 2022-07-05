@@ -5,10 +5,10 @@
 {% endblock %}
 {% block contenidoQueCambia %}
 <h3>Edición de Publicaciones</h3>
-<form action="{% url 'editarPublicacion' publicaciones_Título %}" method="POST">{% csrf_token%}
+<form action="{% url 'editarPublicacion' Titulo %}" method="POST">{% csrf_token %}
     <table>
         {{miFormulario.as_table}}
     </table>
-    <input type ="submit" value=" Editar Publicación">
+    <input type ="submit" value="Editar Publicación">
 </form>
 {%endblock%}

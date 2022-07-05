@@ -1,0 +1,14 @@
+{% extends 'Appestudiosrurales/padre.html' %}
+{% load static %}
+{% block contenidoQueCambia %}
+<h3>Investigadorxs</h3>
+<ul>
+{% for Investigadorxs in object_list %} 
+<li>{{Investigadorxs.Apellido}} {{Investigadorxs.Nombre}}
+<button>
+  <a href="{% url 'investigadorxs_detalle' Investigadorxs.id%}">Detalle</a>
+</button>
+</li>
+{% endfor %}
+</ul>
+{% endblock %}

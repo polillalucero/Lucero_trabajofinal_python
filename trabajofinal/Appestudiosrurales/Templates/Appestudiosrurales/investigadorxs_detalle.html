@@ -1,0 +1,13 @@
+{% extends 'Appestudiosrurales/padre.html' %}
+{% load static %}
+{% block contenidoQueCambia %}
+<p>NOMBRE: <i>{{Investigadorxs.Nombre}}</i></p>
+<p>APELLIDO: <i>{{Investigadorxs.Apellido}}</i></p>
+<p>TITULO: <i>{{Investigadorxs.Titulo}}</i></p>
+<p>PERTENENCIA INSTITUCIONAL: <i>{{Investigadorxs.Pertenencia_institucional}}</i></p>
+<p>EDAD: <i>{{Investigadorxs.Edad}}</i></p>
+<p>EMAIL: <i>{{Investigadorxs.email}}</i></p>
+<p>
+    <a href="{% url 'investigadorxsList' %}"> Volver a la lista de Investigadorxs</a>
+</p>
+{%endblock%}

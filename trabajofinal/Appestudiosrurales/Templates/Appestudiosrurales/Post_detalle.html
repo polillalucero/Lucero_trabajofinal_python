@@ -1,0 +1,13 @@
+{% extends 'Appestudiosrurales/padre.html' %}
+{% load static %}
+{% block contenidoQueCambia %}
+<p>CATEGORIA: <i>{{post.category}}</i></p>
+<p>TITULO:<i>{{post.Titulo}}</i></p>
+<p>SUBTITULO:<i>{{post.SubTitulo}}</i></p>
+<p>CONTENIDO<i>{{post.Contenido}}</i></p>
+<p>AUTORX<i>{{post.Autorx}}</i></p>
+<p>FECHA<i>{{post.Fecha}}</i></p>
+<p>
+    <a href = "{% url 'postList'%}"> Volver a la lista de Posts</a>
+</p>
+{%endblock%}

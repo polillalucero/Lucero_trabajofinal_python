@@ -2,7 +2,7 @@ from django import forms
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
 
-class InvestigadorxsFormulario (forms.Form):
+class InvestigadorxsFormulario(forms.Form):
     Nombre = forms.CharField(max_length=50)
     Apellido = forms.CharField(max_length=50)
     Titulo = forms.CharField(max_length=50)
@@ -10,8 +10,8 @@ class InvestigadorxsFormulario (forms.Form):
     Edad = forms.IntegerField()
     email = forms.EmailField(max_length = 60) 
 
-class PublicacionesFormulario (forms.Form):
-    Título = forms.CharField(max_length=100)
+class PublicacionesFormulario(forms.Form):
+    Titulo = forms.CharField(max_length=100)
     Autorxs = forms.CharField(max_length=50)
     Pertenencia_institucional_de_autorxs = forms.CharField(max_length=50)
     url_de_la_publicacion = forms.URLField(max_length = 200)

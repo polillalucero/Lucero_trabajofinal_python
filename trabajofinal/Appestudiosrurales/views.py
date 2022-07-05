@@ -35,7 +35,7 @@ def publicaciones_home (request):
   return render(request, 'Appestudiosrurales/publicaciones_home.html')
 
 def actividades_eventos (request):
-  return render(request, 'Appestudiosrurales/ActividadesyEventos.html')
+  return render(request, 'Appestudiosrurales/actividades_eventos_list.html')
 
 def about_me (request):
  return render(request, 'Appestudiosrurales/sobre mí.html')
@@ -64,8 +64,8 @@ def busquedainvestigadorx (request):
 
 def buscar (request):
   if request.GET['Apellido']:
-    Apellido = request.GET ["Apellido"]
-    investigadorsx = Investigadorxs.objects.filter (Apellido=Apellido) 
+    Apellido = request.GET ['Apellido']
+    investigadorxs = Investigadorxs.objects.filter (Apellido=Apellido) 
     return render (request, 'Appestudiosrurales/resultadosBusqueda.html', {'investigadorxs': investigadorxs, 'Apellido': Apellido})
   else: 
     respuesta = "No se ha ingresado ningún apellido"  
@@ -75,7 +75,7 @@ def buscar (request):
 def leerPublicaciones (request):
       publicaciones = Publicaciones.objects.all()
       contexto = {'publicaciones': publicaciones}
-      return render (request, 'Appestudiosrurales/publicaciones_home.html', contexto)
+      return render(request, 'Appestudiosrurales/publicaciones_home.html', {'publicaciones': publicaciones})
 
 # CRUD CREATE
 
@@ -84,11 +84,11 @@ def publicacionesFormulario(request):
     miFormulario = PublicacionesFormulario(request.POST)
     if miFormulario.is_valid():
       informacion = miFormulario.cleaned_data
-    Título = informacion ['Título']
+    Titulo = informacion ['Titulo']
     Autorxs = informacion ['Autorxs']
     Pertenencia_institucional_de_autorxs = informacion['Pertenencia_institucional_de_autorxs']
     url_de_la_publicacion = informacion ['url_de_la_publicacion' ]
-    publicaciones = Publicaciones (Título = Título, Autorxs = Autorxs, Pertenencia_institucional_de_autorxs = Pertenencia_institucional_de_autorxs, url_de_la_publicacion = url_de_la_publicacion )
+    publicaciones = Publicaciones (Titulo = Titulo, Autorxs = Autorxs, Pertenencia_institucional_de_autorxs = Pertenencia_institucional_de_autorxs, url_de_la_publicacion = url_de_la_publicacion )
     publicaciones.save()
     return render (request, 'Appestudiosrurales/home.html')
   else:
@@ -98,31 +98,31 @@ def publicacionesFormulario(request):
 #CRUD DELETE
 
 @login_required
-def eliminarPublicacion (request, Título):
-    publicacion = Publicaciones.objects.get(Título = Título)
+def eliminarPublicacion (request, Titulo):
+    publicacion = Publicaciones.objects.get(Titulo=Titulo)
     publicacion.delete()
     publicaciones = Publicaciones.objects.all()
-    contexto = {'publicaciones': publicaciones}
+    contexto = {'publicaciones':publicaciones}
     return render (request, 'Appestudiosrurales/publicaciones_home.html', contexto)
 
 @login_required
-def editarPublicacion (request, publicaciones_Título):
-  publicaciones = Publicaciones.get(publicaciones = publicaciones_Título)
-  if request.method  == 'POST':
-    miFormulario = publicacionesFormulario(request.POST)
-  if miFormulario.is_valid():
-     informacion = miFormulario.cleaned_data
-     publicaciones.Título = informacion ['Título']
-     publicaciones.Autorxs = informacion ['Autorxs']
-     publicaciones.Pertenencia_institucional_de_autorxs = informacion['Pertenencia_institucional_de_autorxs']
-     publicaciones.url_de_la_publicacion = informacion ['url_de_la_publicacion']
-     publicaciones.save()
-     publicaciones = Publicaciones.objects.all()
-     contexto = {'publicaciones' : publicaciones}
-     return render (request, 'Appestudiosrurales/publicaciones_home.html', contexto)
+def editarPublicacion (request, Titulo):
+  publicaciones = Publicaciones.objects.get(Titulo=Titulo)
+  if request.method == 'POST':
+    miFormulario = PublicacionesFormulario(request.POST)
+    if miFormulario.is_valid():
+      informacion = miFormulario.cleaned_data
+    publicaciones.Titulo = informacion['Titulo']
+    publicaciones.Autorxs = informacion['Autorxs']
+    publicaciones.Pertenencia_institucional_de_autorxs = informacion['Pertenencia_institucional_de_autorxs']
+    publicaciones.url_de_la_publicacion = informacion['url_de_la_publicacion']
+    publicaciones.save()
+    publicaciones = Publicaciones.objects.all()
+    contexto = {'publicaciones':publicaciones}
+    return render (request, 'Appestudiosrurales/publicaciones_home.html', contexto)
   else: 
-     miFormulario = publicacionesFormulario (initial={'Título': publicaciones.Título, 'Autorxs':publicaciones.Autorxs, 'Pertenencia_institucional_de_autorxs' : publicaciones.Pertenencia_institucional_de_autorxs, 'url_de_la_publicacion' : publicaciones.url_de_la_publicacion})
-     contexto = {'miFormulario':miFormulario,'publicaciones_Título': publicaciones_Título}
+     miFormulario = PublicacionesFormulario (initial={'Titulo':publicaciones.Titulo, 'Autorxs':publicaciones.Autorxs, 'Pertenencia_institucional_de_autorxs' : publicaciones.Pertenencia_institucional_de_autorxs, 'url_de_la_publicacion' : publicaciones.url_de_la_publicacion})
+     contexto = {'miFormulario':miFormulario,'Titulo':Titulo}
      return render (request, 'Appestudiosrurales/editarPublicacion.html', contexto )
 
 
@@ -139,7 +139,7 @@ class ActividadesyeventosDetalle (DetailView):
 
 class ActividadesyeventosCreacion (CreateView):
   model = Actividades_eventos
-  success_url = reverse_lazy ('atividades_eventos_listar')
+  success_url = reverse_lazy ('actividades_eventos_listar')
   fields = ['nombre_de_evento', 'Fecha', 'Convoca', 'Participan', 'Institucion']  
 
 class ActividadesyeventosEdicion(UpdateView):
@@ -151,6 +151,25 @@ class ActividadesyeventosEliminacion(DeleteView):
   model = Actividades_eventos
   success_url = reverse_lazy('actividades_eventos_listar')
 
+  #CRUD  CREATE POST 
+
+class postList (ListView):
+  model = post
+  template_name = 'Appestudiosrurales/Posts_list.html'
+
+class postDetalle(DetailView):
+  model = post
+  template_name= 'Appestudiosrurales/Post_detalle.html'
+
+  #CRUD CREATE Investigadorxs
+
+class investigadorxsList (ListView):
+  model = Investigadorxs
+  template_name = 'Appestudiosrurales/investigadorxs_list.html'
+
+class investigadorxsDetalle(DetailView):
+  model = Investigadorxs
+  template_name= 'Appestudiosrurales/investigadorxs_detalle.html'
 
 
 #--------------------------------------------------------------------

@@ -2,13 +2,12 @@
 {% extends 'Appestudiosrurales/padre.html' %}
 {% load static %}
 {% block section_name%}
-<h3>Buscador de Post</h3>
+<h3>Buscador de Investigadorx</h3>
 {% endblock %}
 {% block contenidoQueCambia %}
 <form action="{% url 'buscar' %}" method="GET">
     <h1> Ingrese el apellido de le investigadorx </h1>
-    <input type = 'text' name ='Apellido' placeholder="INVESTIGADORX"> 
-    
-     <input type = 'submit' value = 'Buscar'>         
+    <input type = 'text' name ='Apellido' placeholder="APELLIDO"> 
+    <input type = 'submit' value = 'Buscar'>         
 </form>
 {% endblock %}

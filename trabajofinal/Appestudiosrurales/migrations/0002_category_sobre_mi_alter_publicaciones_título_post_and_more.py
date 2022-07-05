@@ -30,7 +30,7 @@ class Migration(migrations.Migration):
         ),
         migrations.AlterField(
             model_name='publicaciones',
-            name='Título',
+            name='Titulo',
             field=models.CharField(max_length=100),
         ),
         migrations.CreateModel(
@@ -38,7 +38,7 @@ class Migration(migrations.Migration):
             fields=[
                 ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
                 ('Titulo', models.CharField(max_length=100)),
-                ('Subttítulo', models.CharField(max_length=100)),
+                ('SubTitulo', models.CharField(max_length=100)),
                 ('Contenido', models.TextField()),
                 ('Fecha', models.DateField(default=django.utils.timezone.now)),
                 ('Autorx', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, related_name='blog_post', to=settings.AUTH_USER_MODEL)),

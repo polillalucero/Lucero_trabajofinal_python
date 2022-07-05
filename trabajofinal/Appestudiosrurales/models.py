@@ -15,7 +15,7 @@ class Category(models.Model):
 class post (models.Model):
     category = models.ForeignKey (Category, on_delete=models.PROTECT, default=1)
     Titulo = models.CharField(max_length=100)
-    Subttítulo = models.CharField(max_length=100)
+    SubTitulo = models.CharField(max_length=100)
     Contenido = models.TextField ()
     Autorx = models.ForeignKey (User, on_delete=models.CASCADE, related_name='blog_post')
     Fecha = models.DateField (default = timezone.now)
@@ -45,13 +45,13 @@ class Investigadorxs (models.Model):
         return self.Nombre+" "+ (self.Apellido)
     
 class Publicaciones (models.Model):
-    Título = models.CharField(max_length=100)
+    Titulo = models.CharField(max_length=100)
     Autorxs = models.CharField(max_length=50)
     Pertenencia_institucional_de_autorxs = models.CharField(max_length=50)
     url_de_la_publicacion = models.URLField(max_length = 200)
 
     def __str__(self) ->str:
-        return self.Autorxs+" "+(self.Título)
+        return self.Autorxs+" "+(self.Titulo)
 
 class Actividades_eventos (models.Model):
     nombre_de_evento = models.CharField(max_length=50)
